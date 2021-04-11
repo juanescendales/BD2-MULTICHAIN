@@ -1,0 +1,66 @@
+multichain-util create empresa
+
+multichaind empresa -daemon
+
+multichain-cli empresa create stream vendedores '{\"restrict\":\"write\"}'
+
+multichain-cli empresa create stream ganancias '{\"restrict\":\"write\"}'
+
+multichain-cli empresa subscribe vendedores
+
+multichain-cli empresa subscribe ganancias
+
+
+multichain-cli empresa create streamfilter smartFilterVendedoresFinal2 '{}' 'function  filterstreamitem(){
+     var obj = getfilterstreamitem();
+     if (obj.keys.length !== 1) {
+         return \"Solo puede tener una clave\";
+     }
+     if (obj.data.json === undefined) {
+         return \"La informacion debe ser de tipo JSON\";
+     }
+     if (Object.values(obj.data).length > 1) {
+         return \"Solo debe de haber informacion de tipo JSON\";
+     }
+
+     if (obj.data.json.nombre === undefined && obj.data.json.telefono === undefined) {
+         return \"El objeto JSON tiene o le faltan atributos\";
+     }
+
+     if (Object.values(obj.data.json).length !== 2) {
+         return \"El objeto JSON tiene o le faltan atributos\";
+     }
+}'
+
+
+multichain-cli empresa approvefrom 1FcDoAcenY5VnWzWCgArA8zorshoWaXaGH4sFv smartFilterVendedoresFinal2 '{\"for\": \"vendedores\", \"approve\": true}'
+
+
+
+
+
+
+
+multichain-cli empresa create streamfilter smartFilterGanancias2 '{}' 'function  filterstreamitem(){
+     var obj = getfilterstreamitem();
+     if (obj.keys.length !== 1) {
+         return \"Solo puede tener una clave\";
+     }
+     if (obj.data.json === undefined) {
+         return \"La informacion debe ser de tipo JSON\";
+     }
+     if (Object.values(obj.data).length > 1) {
+         return \"Solo debe de haber informacion de tipo JSON\";
+     }
+
+     if (obj.data.json.valor === undefined) {
+         return \"No esta el valor\";
+     }
+
+     if (Object.values(obj.data.json).length !== 1) {
+         return \"hay diferente numero de atributos\";
+     }
+
+ }'
+
+multichain-cli empresa approvefrom 1FcDoAcenY5VnWzWCgArA8zorshoWaXaGH4sFv smartFilterGanancias2 '{\"for\": \"ganancias\", \"approve\": true}'
