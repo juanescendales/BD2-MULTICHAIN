@@ -11,7 +11,7 @@ multichain-cli empresa subscribe vendedores
 multichain-cli empresa subscribe ganancias
 
 
-multichain-cli empresa create streamfilter smartFilterVendedoresFinal2 '{}' 'function  filterstreamitem(){
+multichain-cli empresa create streamfilter smartFilterVendedores '{}' 'function  filterstreamitem(){
      var obj = getfilterstreamitem();
      if (obj.keys.length !== 1) {
          return \"Solo puede tener una clave\";
@@ -32,16 +32,7 @@ multichain-cli empresa create streamfilter smartFilterVendedoresFinal2 '{}' 'fun
      }
 }'
 
-
-multichain-cli empresa approvefrom 1FcDoAcenY5VnWzWCgArA8zorshoWaXaGH4sFv smartFilterVendedoresFinal2 '{\"for\": \"vendedores\", \"approve\": true}'
-
-
-
-
-
-
-
-multichain-cli empresa create streamfilter smartFilterGanancias2 '{}' 'function  filterstreamitem(){
+multichain-cli empresa create streamfilter smartFilterGanancias '{}' 'function  filterstreamitem(){
      var obj = getfilterstreamitem();
      if (obj.keys.length !== 1) {
          return \"Solo puede tener una clave\";
@@ -63,4 +54,8 @@ multichain-cli empresa create streamfilter smartFilterGanancias2 '{}' 'function 
 
  }'
 
-multichain-cli empresa approvefrom 1FcDoAcenY5VnWzWCgArA8zorshoWaXaGH4sFv smartFilterGanancias2 '{\"for\": \"ganancias\", \"approve\": true}'
+
+multichain-cli empresa approvefrom 1Cmahg3uLBEopMbQngbHmTo8HJjpfovGVfRbox smartFilterVendedores '{\"for\": \"vendedores\", \"approve\": true}'
+
+
+multichain-cli empresa approvefrom 1Cmahg3uLBEopMbQngbHmTo8HJjpfovGVfRbox smartFilterGanancias '{\"for\": \"ganancias\", \"approve\": true}'

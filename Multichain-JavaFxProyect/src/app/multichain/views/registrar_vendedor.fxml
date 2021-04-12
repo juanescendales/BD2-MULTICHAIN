@@ -37,8 +37,13 @@
       <TextField fx:id="cedula_textfield" layoutX="227.0" layoutY="117.0" prefHeight="26.0" prefWidth="182.0" />
       <TextField fx:id="nombre_textfield" layoutX="228.0" layoutY="181.0" prefHeight="26.0" prefWidth="182.0" />
       <TextField fx:id="telefono_textfield" layoutX="228.0" layoutY="243.0" prefHeight="26.0" prefWidth="182.0" />
-      <Button fx:id="send_button" layoutX="106.0" layoutY="331.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="145.0" text="Ingresar" />
+      <Button fx:id="send_button" layoutX="106.0" layoutY="331.0" mnemonicParsing="false" onAction="#registrarVendedores" prefHeight="42.0" prefWidth="145.0" text="Ingresar" />
       <Button fx:id="back_button" layoutX="528.0" layoutY="368.0" mnemonicParsing="false" onAction="#volver" prefHeight="35.0" prefWidth="104.0" text="Volver" />
-      <Label fx:id="warning_message" layoutX="478.0" layoutY="109.0" prefHeight="146.0" prefWidth="139.0" text="Warning" textFill="RED" />
+      <Label fx:id="warning_message" layoutX="478.0" layoutY="109.0" prefHeight="146.0" prefWidth="139.0" text="" textFill="RED" wrapText="true" />
+      <Label fx:id="success_message" layoutX="105.0" layoutY="285.0" prefHeight="34.0" prefWidth="520.0" textFill="#19c913">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
