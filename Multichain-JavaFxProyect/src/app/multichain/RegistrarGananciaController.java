@@ -45,11 +45,11 @@ public class RegistrarGananciaController implements Initializable {
         try{
             int integer_cedula = Integer.parseInt(cedula);
             if(integer_cedula <= 0){
-                warning_message.setText("La cedula ingresada no es valida , solo debe tener digitos");
+                warning_message.setText("La cedula ingresada no es valida , solo debe tener digitos positivos");
                 return;
             }
         }catch (Exception e){
-            warning_message.setText("La cedula ingresada no es valida , solo debe tener digitos");
+            warning_message.setText("La cedula ingresada no es valida , solo debe tener digitos y no debe estar vacia");
             return;
         }
 
